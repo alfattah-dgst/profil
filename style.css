@@ -109,8 +109,7 @@ p {
 }
 
 .judul-menu {
-    position: relative;
-    left: 30px;
+    display: flex;
     padding: 10px;
     background-color: #eee;
     border: 2px solid #0b4619;
@@ -121,7 +120,7 @@ p {
 
 .card-container {
     display: flex;
-    justify-content: center;
+    justify-content: baseline;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 5px;
