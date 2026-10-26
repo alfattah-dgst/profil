@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -34,6 +36,11 @@
             <li>
                 <a href="">galeri</a></li>
         </ul>
+
+        <div class="cart-container">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge">0</span>
+        </div>
     </nav>
     <section class="s1">
 
@@ -63,6 +70,16 @@
 
         </div>
     </div>
+    <div class="cart-modal" id="cart-modal">
+        <button class="close-btn" onclick="toggleCart()">Tutup</button>
+        <h2>Keranjang Belanja</h2>
+        <div id="cart-items-container">
+            <p>Keranjang masih kosong.</p>
+        </div>
+        <hr>
+        <h3>Total: Rp <span id="cart-total">0</span></h3>
+    </div>
+    <script src=""></script>
 </body>
 
 </html>
