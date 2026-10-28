@@ -1,5 +1,12 @@
 let cart = [];
 
+function tambah() {
+    let angka = document.getElementById('angka');
+    angka.textContent = Number(angka.textContent) + 1;
+
+    quantityitem = angka.textContent;
+}
+
 function tambahkeranjang(idproduk, namaproduk, hargaproduk) {
     let itemada = cart.find(item => item.id === idproduk)
 
@@ -10,14 +17,14 @@ function tambahkeranjang(idproduk, namaproduk, hargaproduk) {
             id: idproduk,
             name: namaproduk,
             price: hargaproduk,
-            quantity: 1
+            quantity: quantityitem
         })
     }
     updatecartdisplay();
 }
 
 function updatecartdisplay() {
-    let totalItem = 0;
+    let totalItem = "";
     let totalPrice = 0;
     let container = document.getElementById('cart-items-container');
 
@@ -27,14 +34,15 @@ function updatecartdisplay() {
         container.innerHTML = "<p>Keranjang masih kosong.</p>";
     } else {
         cart.forEach(item => {
-            totalItem += item.quantity;
-            totalPrice += item.price * item.quantity;
+            totalItem += quantityitem;
+            totalPrice += item.price * quantityitem
+            totalsingle = item.price * quantityitem
 
             // Buat elemen tampilan untuk setiap item di keranjang
             container.innerHTML += `
                         <div class="cart-item">
-                            <span>${item.name} (${item.quantity}x)</span>
-                            <span>Rp ${item.price * item.quantity}</span>
+                            <span>${item.name} (${quantityitem}x)</span>
+                            <span>Rp ${totalsingle.toLocaleString('id-ID')}</span>
                         </div>
                     `;
         });
