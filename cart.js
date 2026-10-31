@@ -1,10 +1,15 @@
 let cart = [];
 
-function tambah() {
+function jumlah(nilai) {
     let angka = document.getElementById('angka');
-    angka.textContent = Number(angka.textContent) + 1;
+    let angkabaru = Number(angka.textContent) + nilai;
 
-    quantityitem = angka.textContent;
+    angka.textContent = Number(angkabaru);
+
+    if (angkabaru < 0) {
+        angka.textContent = 0;
+    }
+
 }
 
 function tambahkeranjang(idproduk, namaproduk, hargaproduk) {
@@ -17,14 +22,15 @@ function tambahkeranjang(idproduk, namaproduk, hargaproduk) {
             id: idproduk,
             name: namaproduk,
             price: hargaproduk,
-            quantity: quantityitem
+            quantity: Number(angka.textContent)
         })
     }
     updatecartdisplay();
+    document.getElementById('angka').textContent = 0;
 }
 
 function updatecartdisplay() {
-    let totalItem = "";
+    let totalItem = 0;
     let totalPrice = 0;
     let container = document.getElementById('cart-items-container');
 
@@ -34,14 +40,14 @@ function updatecartdisplay() {
         container.innerHTML = "<p>Keranjang masih kosong.</p>";
     } else {
         cart.forEach(item => {
-            totalItem += quantityitem;
-            totalPrice += item.price * quantityitem
-            totalsingle = item.price * quantityitem
+            totalItem += item.quantity;
+            totalPrice += item.price * item.quantity
+            totalsingle = item.price * item.quantity
 
             // Buat elemen tampilan untuk setiap item di keranjang
             container.innerHTML += `
                         <div class="cart-item">
-                            <span>${item.name} (${quantityitem}x)</span>
+                            <span>${item.name} (${item.quantity}x)</span>
                             <span>Rp ${totalsingle.toLocaleString('id-ID')}</span>
                         </div>
                     `;
@@ -49,7 +55,7 @@ function updatecartdisplay() {
     }
 
     // Perbarui badge angka di navbar dan total harga
-    document.getElementById('cart-count').innerText = totalItem;
+    document.getElementById('cart-count').innerText = Number(totalItem);
     document.getElementById('cart-total').innerText = totalPrice.toLocaleString('id-ID');
 }
 
